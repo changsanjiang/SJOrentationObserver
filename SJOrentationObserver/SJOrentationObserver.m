@@ -27,6 +27,7 @@
     [self _observerDeviceOrientation];
     _view = view;
     _targetSuperview = targetSuperview;
+    _duration = 0.3;
     return self;
 }
 
@@ -119,7 +120,7 @@
         [superview addConstraint:[NSLayoutConstraint constraintWithItem:_view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:superview attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
     }
     
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:_duration animations:^{
         _view.transform = transform;
     } completion:^(BOOL finished) {
         self.transitioning = NO;

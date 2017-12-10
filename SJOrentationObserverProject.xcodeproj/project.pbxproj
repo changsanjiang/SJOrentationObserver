@@ -18,6 +18,7 @@
 		77A438DF1FDC2A18008BD092 /* UITabBarController+SJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A438DB1FDC2A18008BD092 /* UITabBarController+SJExtension.m */; };
 		77A438E01FDC2A18008BD092 /* UIViewController+SJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A438DD1FDC2A18008BD092 /* UIViewController+SJExtension.m */; };
 		77A438E21FDC2B5C008BD092 /* SJOrentationObserver.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 77A438E11FDC2B5C008BD092 /* SJOrentationObserver.podspec */; };
+		77A438E41FDD6BFC008BD092 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 77A438E31FDD6BFC008BD092 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		77A438DC1FDC2A18008BD092 /* UIViewController+SJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SJExtension.h"; sourceTree = "<group>"; };
 		77A438DD1FDC2A18008BD092 /* UIViewController+SJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SJExtension.m"; sourceTree = "<group>"; };
 		77A438E11FDC2B5C008BD092 /* SJOrentationObserver.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SJOrentationObserver.podspec; sourceTree = "<group>"; };
+		77A438E31FDD6BFC008BD092 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				77A438E11FDC2B5C008BD092 /* SJOrentationObserver.podspec */,
+				77A438E31FDD6BFC008BD092 /* README.md */,
 				77A438A41FDC238A008BD092 /* SJOrentationObserverProject */,
 				77A438A31FDC238A008BD092 /* Products */,
 			);
@@ -170,6 +173,7 @@
 			files = (
 				77A438E21FDC2B5C008BD092 /* SJOrentationObserver.podspec in Resources */,
 				77A438B21FDC238A008BD092 /* LaunchScreen.storyboard in Resources */,
+				77A438E41FDD6BFC008BD092 /* README.md in Resources */,
 				77A438AF1FDC238A008BD092 /* Assets.xcassets in Resources */,
 				77A438AD1FDC238A008BD092 /* Main.storyboard in Resources */,
 			);
