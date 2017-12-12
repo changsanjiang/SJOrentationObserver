@@ -131,7 +131,12 @@
 
 - (BOOL)_changeOrientation {
     if ( self.isTransitioning ) return NO;
-    self.fullScreen = !self.fullScreen;
+    if ( self.fullScreen ) {
+        [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
+    }
+    else {
+        [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationLandscapeRight) forKey:@"orientation"];
+    }
     return YES;
 }
 
