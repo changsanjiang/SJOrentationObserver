@@ -21,7 +21,7 @@
 
 @implementation SJOrentationObserver
 
-- (instancetype)initWithTarget:(__weak UIView *)view container:(__weak UIView *)targetSuperview {
+- (instancetype)initWithTarget:(UIView *)view container:(UIView *)targetSuperview {
     self = [super init];
     if ( !self ) return nil;
     [self _observerDeviceOrientation];
@@ -131,12 +131,7 @@
 
 - (BOOL)_changeOrientation {
     if ( self.isTransitioning ) return NO;
-    if ( self.fullScreen ) {
-        [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
-    }
-    else {
-        [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationLandscapeRight) forKey:@"orientation"];
-    }
+    self.fullScreen = !self.fullScreen;
     return YES;
 }
 
