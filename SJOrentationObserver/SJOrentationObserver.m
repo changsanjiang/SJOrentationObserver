@@ -24,10 +24,10 @@
 - (instancetype)initWithTarget:(UIView *)view container:(UIView *)targetSuperview {
     self = [super init];
     if ( !self ) return nil;
-    [self _observerDeviceOrientation];
     _view = view;
     _targetSuperview = targetSuperview;
     _duration = 0.3;
+    [self _observerDeviceOrientation];
     return self;
 }
 
@@ -59,6 +59,8 @@
 }
 
 - (void)setFullScreen:(BOOL)fullScreen {
+    if ( !_view || !_targetSuperview ) return;
+
     if ( self.rotationCondition ) {
         if ( !self.rotationCondition(self) ) return;
     }
