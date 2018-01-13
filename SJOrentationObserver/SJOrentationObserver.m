@@ -60,7 +60,7 @@
 
 - (void)setFullScreen:(BOOL)fullScreen {
     if ( !_view || !_targetSuperview ) return;
-
+    
     if ( self.rotationCondition ) {
         if ( !self.rotationCondition(self) ) return;
     }
@@ -74,7 +74,7 @@
     
     _fullScreen = fullScreen;
     self.transitioning = YES;
-
+    
     CGAffineTransform transform = CGAffineTransformIdentity;
     UIView *superview = nil;
     UIInterfaceOrientation ori = UIInterfaceOrientationUnknown;
@@ -99,17 +99,19 @@
             break;
         default: break;
     }
-
+    
     if ( !superview || UIInterfaceOrientationUnknown == ori ) {
         self.transitioning = NO;
         return;
     }
-    
+    [_view removeFromSuperview];
     [superview addSubview:_view];
     _view.translatesAutoresizingMaskIntoConstraints = NO;
     if ( UIInterfaceOrientationPortrait == ori ) {
-        [superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_view]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_view)]];
-        [superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_view]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_view)]];
+        [superview addConstraint:[NSLayoutConstraint constraintWithItem:_view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:superview attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
+        [superview addConstraint:[NSLayoutConstraint constraintWithItem:_view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:superview attribute:NSLayoutAttributeLeft multiplier:1 constant:0]];
+        [superview addConstraint:[NSLayoutConstraint constraintWithItem:_view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:superview attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+        [superview addConstraint:[NSLayoutConstraint constraintWithItem:_view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:superview attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
     }
     else {
         CGFloat width = [UIScreen mainScreen].bounds.size.width;
@@ -148,3 +150,4 @@
 }
 
 @end
+
