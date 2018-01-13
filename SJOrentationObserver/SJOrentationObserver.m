@@ -7,13 +7,14 @@
 //
 
 #import "SJOrentationObserver.h"
+#import <Masonry/Masonry.h>
 
 @interface SJOrentationObserver ()
 
 @property (nonatomic, assign, readwrite, getter=isFullScreen) BOOL fullScreen;
 
-@property (nonatomic, weak, readwrite) UIView *view;
-@property (nonatomic, weak, readwrite) UIView *targetSuperview;
+@property (nonatomic, strong, readwrite) UIView *view;
+@property (nonatomic, strong, readwrite) UIView *targetSuperview;
 
 @property (nonatomic, assign, readwrite, getter=isTransitioning) BOOL transitioning;
 
@@ -24,10 +25,10 @@
 - (instancetype)initWithTarget:(UIView *)view container:(UIView *)targetSuperview {
     self = [super init];
     if ( !self ) return nil;
+    [self _observerDeviceOrientation];
     _view = view;
     _targetSuperview = targetSuperview;
     _duration = 0.3;
-    [self _observerDeviceOrientation];
     return self;
 }
 
@@ -104,24 +105,23 @@
         self.transitioning = NO;
         return;
     }
-    [_view removeFromSuperview];
+    
     [superview addSubview:_view];
     _view.translatesAutoresizingMaskIntoConstraints = NO;
     if ( UIInterfaceOrientationPortrait == ori ) {
-        [superview addConstraint:[NSLayoutConstraint constraintWithItem:_view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:superview attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
-        [superview addConstraint:[NSLayoutConstraint constraintWithItem:_view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:superview attribute:NSLayoutAttributeLeft multiplier:1 constant:0]];
-        [superview addConstraint:[NSLayoutConstraint constraintWithItem:_view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:superview attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
-        [superview addConstraint:[NSLayoutConstraint constraintWithItem:_view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:superview attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
+        [_view mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.edges.offset(0);
+        }];
     }
     else {
         CGFloat width = [UIScreen mainScreen].bounds.size.width;
         CGFloat height = [UIScreen mainScreen].bounds.size.height;
         CGFloat max = MAX(width, height);
         CGFloat min = MIN(width, height);
-        [superview addConstraint:[NSLayoutConstraint constraintWithItem:_view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:max]];
-        [superview addConstraint:[NSLayoutConstraint constraintWithItem:_view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:min]];
-        [superview addConstraint:[NSLayoutConstraint constraintWithItem:_view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:superview attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
-        [superview addConstraint:[NSLayoutConstraint constraintWithItem:_view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:superview attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+        [_view mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.center.offset(0);
+            make.size.mas_offset(CGSizeMake(max, min));
+        }];
     }
     
     [UIView animateWithDuration:_duration animations:^{
@@ -150,4 +150,3 @@
 }
 
 @end
-
