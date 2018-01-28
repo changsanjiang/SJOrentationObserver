@@ -106,31 +106,43 @@
         return;
     }
     
+    CGRect fix = _view.frame;
+    
+    if ( UIInterfaceOrientationPortrait != ori ) fix.origin = [[UIApplication sharedApplication].keyWindow convertPoint:CGPointZero fromView:_targetSuperview];
+    else {
+        CGPoint point = [[UIApplication sharedApplication].keyWindow convertPoint:CGPointZero fromView:_targetSuperview];
+        fix.origin = CGPointMake(-point.x, -point.y);
+    }
+    
+    _view.frame = fix;
+    
     [superview addSubview:_view];
     _view.translatesAutoresizingMaskIntoConstraints = NO;
-    if ( UIInterfaceOrientationPortrait == ori ) {
-        [_view mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.edges.offset(0);
-        }];
-    }
-    else {
-        CGFloat width = [UIScreen mainScreen].bounds.size.width;
-        CGFloat height = [UIScreen mainScreen].bounds.size.height;
-        CGFloat max = MAX(width, height);
-        CGFloat min = MIN(width, height);
-        [_view mas_remakeConstraints:^(MASConstraintMaker *make) {
+    [_view mas_remakeConstraints:^(MASConstraintMaker *make) {
+        if ( UIInterfaceOrientationPortrait == ori ) {
+            make.edges.equalTo(self.targetSuperview);
+        }
+        else {
+            CGFloat width = [UIScreen mainScreen].bounds.size.width;
+            CGFloat height = [UIScreen mainScreen].bounds.size.height;
+            CGFloat max = MAX(width, height);
+            CGFloat min = MIN(width, height);
             make.center.offset(0);
             make.size.mas_offset(CGSizeMake(max, min));
-        }];
-    }
+        }
+    }];
+    
+    if ( _orientationWillChange ) _orientationWillChange(self);
     
     [UIView animateWithDuration:_duration animations:^{
         _view.transform = transform;
+        [_view.superview layoutIfNeeded];
     } completion:^(BOOL finished) {
         self.transitioning = NO;
+        if ( _orientationChanged ) _orientationChanged(self);
     }];
+    
     [UIApplication sharedApplication].statusBarOrientation = ori;
-    if ( _orientationChanged ) _orientationChanged(self);
 }
 
 - (BOOL)_changeOrientation {
@@ -138,7 +150,6 @@
     UIDeviceOrientation n_ori = UIDeviceOrientationUnknown;
     if ( self.fullScreen ) n_ori = UIDeviceOrientationPortrait;
     else n_ori = UIDeviceOrientationLandscapeLeft;
-    
     
     if ( n_ori == [UIDevice currentDevice].orientation ) {
         self.fullScreen = !self.fullScreen;

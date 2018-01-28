@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SJOrentationObserver"
-  s.version      = "0.0.8"
+  s.version      = "1.0.0"
   s.summary      = "Screen rotation observer."
 
   # This description is used to generate tags and improve search results.
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-    Screen rotation observer, 屏幕旋转观察者.
+    Screen rotation observer, 屏幕旋转助手.
                    DESC
 
   s.homepage     = "https://github.com/changsanjiang/SJOrentationObserver"

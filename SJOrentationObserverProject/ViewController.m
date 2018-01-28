@@ -34,11 +34,21 @@
 }
 
 - (void)_addExampleView {
+    
+    UIView *containerView = [UIView new];
+    containerView.backgroundColor = [UIColor blackColor];
+    containerView.frame = CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.width * 9.0 / 16);
+    
+    [self.view addSubview:containerView];
+    
+    
+    
     superview = [UIView new];
     superview.backgroundColor = [UIColor blackColor];
-    superview.bounds = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width * 9.0 / 16);
-    superview.center = self.view.center;
-    [self.view addSubview:superview];
+//    superview.frame = CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.width * 9.0 / 16);
+    superview.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width * 9.0 / 16);
+
+    [containerView addSubview:superview];
     
     
     targetView = [UIView new];
