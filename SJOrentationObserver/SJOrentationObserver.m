@@ -133,7 +133,7 @@
         }
     }];
     
-    if ( _orientationWillChange ) _orientationWillChange(self);
+    if ( _orientationWillChange ) _orientationWillChange(self, fullScreen);
     
     [UIView animateWithDuration:_duration animations:^{
         [_view setTransform:transform];
@@ -147,7 +147,7 @@
                 make.edges.equalTo(self.targetSuperview);
             }];
         }
-        if ( _orientationChanged ) _orientationChanged(self);
+        if ( _orientationChanged ) _orientationChanged(self, fullScreen);
     }];
 }
 
