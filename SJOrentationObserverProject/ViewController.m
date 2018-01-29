@@ -37,7 +37,7 @@
     
     UIView *containerView = [UIView new];
     containerView.backgroundColor = [UIColor blackColor];
-    containerView.frame = CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.width * 9.0 / 16);
+    containerView.frame = CGRectMake(0, 300, self.view.frame.size.width, self.view.frame.size.width * 9.0 / 16);
     
     [self.view addSubview:containerView];
     

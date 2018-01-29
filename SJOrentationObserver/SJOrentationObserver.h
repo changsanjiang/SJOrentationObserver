@@ -5,10 +5,8 @@
 //  Created by BlueDancer on 2017/12/5.
 //  Copyright © 2017年 SanJiang. All rights reserved.
 //
-// 项目地址: https://github.com/changsanjiang/SJOrentationObserver
-// 我的邮箱: changsanjiang@gmail.com
-//
-// 注意事项: 如果父视图的`clipsToBounds == YES`, 转回小屏时, 会出现被截掉一部分. 请注意这个问题.
+//  https://github.com/changsanjiang/SJOrentationObserver
+//  changsanjiang@gmail.com
 //
 
 #import <UIKit/UIKit.h>
