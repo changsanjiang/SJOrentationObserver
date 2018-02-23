@@ -14,12 +14,12 @@
 		77A438AF1FDC238A008BD092 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77A438AE1FDC238A008BD092 /* Assets.xcassets */; };
 		77A438B21FDC238A008BD092 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77A438B01FDC238A008BD092 /* LaunchScreen.storyboard */; };
 		77A438B51FDC238A008BD092 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A438B41FDC238A008BD092 /* main.m */; };
-		77A438D21FDC29D8008BD092 /* SJOrentationObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A438CB1FDC29D7008BD092 /* SJOrentationObserver.m */; };
 		77A438DE1FDC2A18008BD092 /* UINavigationController+SJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A438D91FDC2A18008BD092 /* UINavigationController+SJExtension.m */; };
 		77A438DF1FDC2A18008BD092 /* UITabBarController+SJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A438DB1FDC2A18008BD092 /* UITabBarController+SJExtension.m */; };
 		77A438E01FDC2A18008BD092 /* UIViewController+SJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A438DD1FDC2A18008BD092 /* UIViewController+SJExtension.m */; };
 		77A438E21FDC2B5C008BD092 /* SJOrentationObserver.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 77A438E11FDC2B5C008BD092 /* SJOrentationObserver.podspec */; };
 		77A438E41FDD6BFC008BD092 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 77A438E31FDD6BFC008BD092 /* README.md */; };
+		77E75431203FE43400A5AF44 /* SJOrentationObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E7542F203FE43400A5AF44 /* SJOrentationObserver.m */; };
 		A644109A200A71A7006FD832 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A6441099200A71A7006FD832 /* Podfile */; };
 /* End PBXBuildFile section */
 
@@ -36,8 +36,6 @@
 		77A438B11FDC238A008BD092 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		77A438B31FDC238A008BD092 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77A438B41FDC238A008BD092 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		77A438CA1FDC29D7008BD092 /* SJOrentationObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJOrentationObserver.h; sourceTree = "<group>"; };
-		77A438CB1FDC29D7008BD092 /* SJOrentationObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJOrentationObserver.m; sourceTree = "<group>"; };
 		77A438D81FDC2A18008BD092 /* UINavigationController+SJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+SJExtension.h"; sourceTree = "<group>"; };
 		77A438D91FDC2A18008BD092 /* UINavigationController+SJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+SJExtension.m"; sourceTree = "<group>"; };
 		77A438DA1FDC2A18008BD092 /* UITabBarController+SJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+SJExtension.h"; sourceTree = "<group>"; };
@@ -46,6 +44,8 @@
 		77A438DD1FDC2A18008BD092 /* UIViewController+SJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SJExtension.m"; sourceTree = "<group>"; };
 		77A438E11FDC2B5C008BD092 /* SJOrentationObserver.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SJOrentationObserver.podspec; sourceTree = "<group>"; };
 		77A438E31FDD6BFC008BD092 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		77E7542F203FE43400A5AF44 /* SJOrentationObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJOrentationObserver.m; sourceTree = "<group>"; };
+		77E75430203FE43400A5AF44 /* SJOrentationObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJOrentationObserver.h; sourceTree = "<group>"; };
 		826C1431EE5E5F4EADCED70E /* Pods-SJOrentationObserverProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SJOrentationObserverProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-SJOrentationObserverProject/Pods-SJOrentationObserverProject.release.xcconfig"; sourceTree = "<group>"; };
 		A6441099200A71A7006FD832 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,8 +112,8 @@
 		77A438C91FDC29D7008BD092 /* SJOrentationObserver */ = {
 			isa = PBXGroup;
 			children = (
-				77A438CA1FDC29D7008BD092 /* SJOrentationObserver.h */,
-				77A438CB1FDC29D7008BD092 /* SJOrentationObserver.m */,
+				77E75430203FE43400A5AF44 /* SJOrentationObserver.h */,
+				77E7542F203FE43400A5AF44 /* SJOrentationObserver.m */,
 				77A438D71FDC2A18008BD092 /* Category */,
 			);
 			path = SJOrentationObserver;
@@ -269,8 +269,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				77A438DE1FDC2A18008BD092 /* UINavigationController+SJExtension.m in Sources */,
+				77E75431203FE43400A5AF44 /* SJOrentationObserver.m in Sources */,
 				77A438AA1FDC238A008BD092 /* ViewController.m in Sources */,
-				77A438D21FDC29D8008BD092 /* SJOrentationObserver.m in Sources */,
 				77A438E01FDC2A18008BD092 /* UIViewController+SJExtension.m in Sources */,
 				77A438B51FDC238A008BD092 /* main.m in Sources */,
 				77A438DF1FDC2A18008BD092 /* UITabBarController+SJExtension.m in Sources */,

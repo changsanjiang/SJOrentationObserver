@@ -12,6 +12,7 @@
 @interface ViewController ()
 
 @property (nonatomic, strong) SJOrentationObserver *observer;
+@property (weak, nonatomic) IBOutlet UIButton *changeBtn;
 
 @end
 
@@ -29,6 +30,8 @@
     _observer.rotationCondition = ^BOOL(SJOrentationObserver * _Nonnull observer) {
         return YES;
     };
+    
+//    _observer.supportedRotationOrientation = SJSupportedRotationOrientation_LandscapeRight | SJSupportedRotationOrientation_LandscapeLeft;
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -55,6 +58,10 @@
     targetView.frame = superview.bounds;
     targetView.backgroundColor = [UIColor orangeColor];
     [superview addSubview:targetView];
+    
+    
+    [targetView addSubview:self.changeBtn];
+    self.changeBtn.frame = targetView.bounds;
 }
 
 
@@ -63,5 +70,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)change:(id)sender {
+    [_observer _changeOrientation];
+}
 
 @end
