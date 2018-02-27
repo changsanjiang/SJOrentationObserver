@@ -17,8 +17,8 @@
 @end
 
 @implementation ViewController {
-    UIView *superview;
-    UIView *targetView;
+    UIView *_superview;
+    UIView *_targetView;
 }
 
 - (void)viewDidLoad {
@@ -26,11 +26,14 @@
     
     [self _addExampleView];
     
-    _observer = [[SJOrentationObserver alloc] initWithTarget:targetView container:superview];
+    _observer = [[SJOrentationObserver alloc] initWithTarget:_targetView container:_superview];
+    
+    // must imp it.
     _observer.rotationCondition = ^BOOL(SJOrentationObserver * _Nonnull observer) {
         return YES;
     };
     
+    // support orientation
 //    _observer.supportedRotationOrientation = SJSupportedRotationOrientation_LandscapeRight | SJSupportedRotationOrientation_LandscapeLeft;
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -38,30 +41,18 @@
 
 - (void)_addExampleView {
     
-    UIView *containerView = [UIView new];
-    containerView.backgroundColor = [UIColor blackColor];
-    containerView.frame = CGRectMake(0, 300, self.view.frame.size.width, self.view.frame.size.width * 9.0 / 16);
+    _superview = [UIView new];
+    _superview.backgroundColor = [UIColor blackColor];
+    _superview.frame = CGRectMake(0, 300, self.view.frame.size.width, self.view.frame.size.width * 9.0 / 16);
+    [self.view addSubview:_superview];
     
-    [self.view addSubview:containerView];
+    _targetView = [UIView new];
+    _targetView.frame = _superview.bounds;
+    _targetView.backgroundColor = [UIColor orangeColor];
+    [_superview addSubview:_targetView];
     
-    
-    
-    superview = [UIView new];
-    superview.backgroundColor = [UIColor blackColor];
-//    superview.frame = CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.width * 9.0 / 16);
-    superview.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width * 9.0 / 16);
-
-    [containerView addSubview:superview];
-    
-    
-    targetView = [UIView new];
-    targetView.frame = superview.bounds;
-    targetView.backgroundColor = [UIColor orangeColor];
-    [superview addSubview:targetView];
-    
-    
-    [targetView addSubview:self.changeBtn];
-    self.changeBtn.frame = targetView.bounds;
+    [_targetView addSubview:self.changeBtn];
+    self.changeBtn.frame = _targetView.bounds;
 }
 
 
