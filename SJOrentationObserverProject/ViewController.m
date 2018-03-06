@@ -26,17 +26,13 @@
     
     [self _addExampleView];
     
-    _observer = [[SJOrentationObserver alloc] initWithTarget:_targetView container:_superview];
-    
-    // must imp it.
-    _observer.rotationCondition = ^BOOL(SJOrentationObserver * _Nonnull observer) {
+    _observer = [[SJOrentationObserver alloc] initWithTarget:_targetView container:_superview rotationCondition:^BOOL(SJOrentationObserver * _Nonnull observer) {
         return YES;
-    };
+    }];
     
     // support orientation
 //    _observer.supportedRotationOrientation = SJSupportedRotationOrientation_LandscapeRight | SJSupportedRotationOrientation_LandscapeLeft;
     
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)_addExampleView {
