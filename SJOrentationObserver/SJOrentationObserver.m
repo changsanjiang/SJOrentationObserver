@@ -25,6 +25,8 @@
 
 @implementation SJOrentationObserver
 
+static UIWindow *__window;
+
 - (instancetype)initWithTarget:(UIView *)view container:(UIView *)targetSuperview {
     self = [super init];
     if ( !self ) return nil;
@@ -36,6 +38,7 @@
     _blackView.backgroundColor = [UIColor blackColor];
     _rotateOrientation = SJRotateViewOrientation_Portrait;
     _currentOrientation = UIDeviceOrientationPortrait;
+    __window = [(id)[UIApplication sharedApplication].delegate valueForKey:@"window"];
     return self;
 }
 
@@ -121,13 +124,13 @@
         case SJRotateViewOrientation_LandscapeRight: {
             ori = UIInterfaceOrientationLandscapeLeft;
             transform = CGAffineTransformMakeRotation(-M_PI_2);
-            superview = [(id)[UIApplication sharedApplication].delegate valueForKey:@"window"];
+            superview = __window;
         }
             break;
         case SJRotateViewOrientation_LandscapeLeft: {
             ori = UIInterfaceOrientationLandscapeRight;
             transform = CGAffineTransformMakeRotation(M_PI_2);
-            superview = [(id)[UIApplication sharedApplication].delegate valueForKey:@"window"];
+            superview = __window;
         }
             break;
         case SJRotateViewOrientation_Portrait: {
@@ -146,7 +149,7 @@
     
     if ( _rotateOrientation == SJRotateViewOrientation_Portrait && UIInterfaceOrientationPortrait != ori ) {
         CGRect fix = _view.frame;
-        fix.origin = [[(id)[UIApplication sharedApplication].delegate valueForKey:@"window"] convertPoint:CGPointZero fromView:_targetSuperview];
+        fix.origin = [__window convertPoint:CGPointZero fromView:_targetSuperview];
         [superview addSubview:_view];
         _view.frame = fix;
     }
@@ -158,7 +161,7 @@
     
     [_view mas_remakeConstraints:^(MASConstraintMaker *make) {
         if ( UIInterfaceOrientationPortrait == ori ) {
-            CGRect rect = [[(id)[UIApplication sharedApplication].delegate valueForKey:@"window"] convertRect:self.targetSuperview.bounds fromView:self.targetSuperview];
+            CGRect rect = [__window convertRect:self.targetSuperview.bounds fromView:self.targetSuperview];
             make.size.mas_equalTo(rect.size);
             make.top.offset(rect.origin.y);
             make.leading.offset(rect.origin.x);
@@ -173,28 +176,33 @@
         }
     }];
     
-    
     if ( _orientationWillChange ) _orientationWillChange(self, self.isFullScreen);
     
-    [UIView animateWithDuration:_duration animations:^{
-        [_view setTransform:transform];
-        [_view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        self.transitioning = NO;
-        if ( UIInterfaceOrientationPortrait == ori ) {
-            [superview addSubview:_view];
-            [_view mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.edges.equalTo(self.targetSuperview);
-            }];
-        }
-        else {
-            self.blackView.bounds = _view.bounds;
-            self.blackView.center = _view.center;
-            self.blackView.transform = _view.transform;
-            [superview insertSubview:self.blackView belowSubview:_view];
-        }
-        if ( _orientationChanged ) _orientationChanged(self, self.isFullScreen);
-    }];
+    [UIView beginAnimations:@"rotation" context:NULL];
+    [UIView setAnimationDuration:_duration];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(_animationDidStop)];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [_view setTransform:transform];
+    [_view.superview layoutIfNeeded];
+    [UIView commitAnimations];
+}
+
+- (void)_animationDidStop {
+    self.transitioning = NO;
+    if ( UIInterfaceOrientationPortrait == [UIApplication sharedApplication].statusBarOrientation ) {
+        [_targetSuperview addSubview:_view];
+        [_view mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.targetSuperview);
+        }];
+    }
+    else {
+        self.blackView.bounds = _view.bounds;
+        self.blackView.center = _view.center;
+        self.blackView.transform = _view.transform;
+        [__window insertSubview:self.blackView belowSubview:_view];
+    }
+    if ( _orientationChanged ) _orientationChanged(self, self.isFullScreen);
 }
 
 - (BOOL)_changeOrientation {
