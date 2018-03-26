@@ -161,13 +161,13 @@ static UIWindow *__window;
 - (void)rotate:(SJRotateViewOrientation)orientation animated:(BOOL)animated completion:(void (^)(SJOrentationObserver * _Nonnull))block {
     if ( !_view || !_targetSuperview ) return;
 
+    if ( self.isTransitioning ) return;
+
     if ( orientation == _rotateOrientation ) { if ( block ) block(self); return; }
     
-    if ( self.rotationCondition ) { if ( !self.rotationCondition(self) ) return; }
+    if ( _rotationCondition ) { if ( !_rotationCondition(self) ) return; }
     
-    if ( self.isTransitioning ) return;
-    
-    self.transitioning = YES;
+    _transitioning = YES;
     
     CGAffineTransform transform = CGAffineTransformIdentity;
     UIView *superview = nil;
@@ -189,20 +189,21 @@ static UIWindow *__window;
         case SJRotateViewOrientation_Portrait: {
             ori = UIInterfaceOrientationPortrait;
             transform = CGAffineTransformIdentity;
-            superview = self.targetSuperview;
+            superview = _targetSuperview;
             [_blackView removeFromSuperview];
         }
             break;
     }
     
     if ( !superview || UIInterfaceOrientationUnknown == ori ) {
-        self.transitioning = NO;
+        _transitioning = NO;
         return;
     }
     
     if ( _rotateOrientation == SJRotateViewOrientation_Portrait && UIInterfaceOrientationPortrait != ori ) {
         CGRect fix = _view.frame;
         fix.origin = [__window convertPoint:CGPointZero fromView:_targetSuperview];
+        [_view removeFromSuperview];
         [superview addSubview:_view];
         _view.frame = fix;
     }
@@ -237,16 +238,17 @@ static UIWindow *__window;
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(_animationDidStop)];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [_view setTransform:transform];
     [_view.superview layoutIfNeeded];
+    [_view setTransform:transform];
     [UIView commitAnimations];
-    
-    self.completion = [block copy];
+    _completion = [block copy];
 }
 
 - (void)_animationDidStop {
-    self.transitioning = NO;
+    _transitioning = NO;
+    
     if ( UIInterfaceOrientationPortrait == [UIApplication sharedApplication].statusBarOrientation ) {
+        [_view removeFromSuperview];
         [_targetSuperview addSubview:_view];
         [_view mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.targetSuperview);
@@ -258,10 +260,9 @@ static UIWindow *__window;
         self.blackView.transform = _view.transform;
         [__window insertSubview:self.blackView belowSubview:_view];
     }
+    
     if ( _orientationChanged ) _orientationChanged(self, self.isFullScreen);
-    if ( self.completion ) {
-        self.completion(self);
-        self.completion = nil;
-    }
+    
+    if ( _completion ) { _completion(self); _completion = nil;}
 }
 @end
