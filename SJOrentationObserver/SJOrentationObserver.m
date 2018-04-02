@@ -197,7 +197,7 @@ static UIWindow *__window;
         CGRect frame = [__window convertRect:_view.frame fromView:_targetSuperview];
         _view.frame = frame;
         [__window addSubview:_view];
-        if ( CGRectIsEmpty(_portrait) ) _portrait = frame;
+        _portrait = frame;
     }
     
     
@@ -205,8 +205,6 @@ static UIWindow *__window;
     _rotateOrientation = orientation;
     
     [UIApplication sharedApplication].statusBarOrientation = ori;
-    
-    if ( _orientationWillChange ) _orientationWillChange(self, self.isFullScreen);
     
     [UIView beginAnimations:@"rotation" context:NULL];
     if ( animated ) [UIView setAnimationDuration:_duration];
@@ -230,6 +228,7 @@ static UIWindow *__window;
     [_view layoutIfNeeded];
     [UIView commitAnimations];
     _completion = [block copy];
+    if ( _orientationWillChange ) _orientationWillChange(self, self.isFullScreen);
 }
 
 - (void)_animationDidStop {
