@@ -225,7 +225,6 @@ static UIWindow *__window;
         _view.center = CGPointMake(min * 0.5, max * 0.5);
     }
     [_view setTransform:transform];
-    [_view layoutIfNeeded];
     [UIView commitAnimations];
     _completion = [block copy];
     if ( _orientationWillChange ) _orientationWillChange(self, self.isFullScreen);
