@@ -7,8 +7,6 @@
 //
 
 #import "SJOrentationObserver.h"
-#import <Masonry/Masonry.h>
-
 
 @interface SJOrentationObserver () {
     CGRect _portrait;
