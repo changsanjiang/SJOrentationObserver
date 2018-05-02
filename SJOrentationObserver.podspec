@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SJOrentationObserver"
-  s.version      = "1.0.7.2"
+  s.version      = "1.0.8"
   s.summary      = "Screen rotation observer."
 
   # This description is used to generate tags and improve search results.
