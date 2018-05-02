@@ -54,7 +54,7 @@ static UIWindow *__window;
 }
 
 - (SJAutoRotateSupportedOrientation)supported_Ori {
-    SJAutoRotateSupportedOrientation supported = self.supportedRotateViewOrientation;
+    SJAutoRotateSupportedOrientation supported = self.supportedOrientation;
     if ( SJAutoRotateSupportedOrientation_All == supported ) supported = SJAutoRotateSupportedOrientation_Portrait | SJAutoRotateSupportedOrientation_LandscapeRight | SJAutoRotateSupportedOrientation_LandscapeLeft;
     return supported;
 }

@@ -37,7 +37,7 @@ typedef NS_ENUM(NSUInteger, SJOrientation) {
 @property (nonatomic, copy, nullable) BOOL(^rotationCondition)(SJOrentationObserver *observer);
 
 /// Auto rotate supported orientation
-@property (nonatomic) SJAutoRotateSupportedOrientation supportedRotateViewOrientation;
+@property (nonatomic) SJAutoRotateSupportedOrientation supportedOrientation;
 
 /// Current Orientation. Can also change it, rotate to the specified orientation. Animated
 @property (nonatomic) SJOrientation orientation;
