@@ -8,11 +8,9 @@
 
 #import "UITabBarController+SJExtension.h"
 
-@implementation UITabBarController (SJExtension)
-
 - (BOOL)shouldAutorotate {
     if ( self.viewControllers.count <= 5 || self.selectedIndex < 4 ) {
-        UIViewController *vc = self.viewControllers[self.selectedIndex];
+        UIViewController *vc = self.selectedViewController;
         if ( [vc isKindOfClass:[UINavigationController class]] )
             return [((UINavigationController *)vc).topViewController shouldAutorotate];
         
@@ -27,7 +25,7 @@
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     if ( self.viewControllers.count <= 5 || self.selectedIndex < 4 ) {
-        UIViewController *vc = self.viewControllers[self.selectedIndex];
+        UIViewController *vc = self.selectedViewController;
         if ( [vc isKindOfClass:[UINavigationController class]] )
             return [((UINavigationController *)vc).topViewController supportedInterfaceOrientations];
         
@@ -42,7 +40,7 @@
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
     if ( self.viewControllers.count <= 5 || self.selectedIndex < 4 ) {
-        UIViewController *vc = self.viewControllers[self.selectedIndex];
+        UIViewController *vc = self.selectedViewController;
         if ( [vc isKindOfClass:[UINavigationController class]] )
             return [((UINavigationController *)vc).topViewController preferredInterfaceOrientationForPresentation];
         
