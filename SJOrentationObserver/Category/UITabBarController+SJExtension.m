@@ -8,6 +8,8 @@
 
 #import "UITabBarController+SJExtension.h"
 
+@implementation UITabBarController (SJExtension)
+
 - (BOOL)shouldAutorotate {
     if ( self.viewControllers.count <= 5 || self.selectedIndex < 4 ) {
         UIViewController *vc = self.selectedViewController;
