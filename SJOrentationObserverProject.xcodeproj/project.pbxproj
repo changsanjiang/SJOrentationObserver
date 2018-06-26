@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		282CB574B117B448DF064EAA /* libPods-SJOrentationObserverProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23725805476A59B1CAEBDD36 /* libPods-SJOrentationObserverProject.a */; };
+		771C971620E1EEFD001BA7FC /* SJRotationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 771C971420E1EEFD001BA7FC /* SJRotationManager.m */; };
 		77A438A71FDC238A008BD092 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A438A61FDC238A008BD092 /* AppDelegate.m */; };
 		77A438AA1FDC238A008BD092 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A438A91FDC238A008BD092 /* ViewController.m */; };
 		77A438AD1FDC238A008BD092 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77A438AB1FDC238A008BD092 /* Main.storyboard */; };
@@ -26,6 +27,8 @@
 /* Begin PBXFileReference section */
 		23725805476A59B1CAEBDD36 /* libPods-SJOrentationObserverProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SJOrentationObserverProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D5DE6A457C914F32420086F /* Pods-SJOrentationObserverProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SJOrentationObserverProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SJOrentationObserverProject/Pods-SJOrentationObserverProject.debug.xcconfig"; sourceTree = "<group>"; };
+		771C971420E1EEFD001BA7FC /* SJRotationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJRotationManager.m; sourceTree = "<group>"; };
+		771C971520E1EEFD001BA7FC /* SJRotationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJRotationManager.h; sourceTree = "<group>"; };
 		77A438A21FDC238A008BD092 /* SJOrentationObserverProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SJOrentationObserverProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77A438A51FDC238A008BD092 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		77A438A61FDC238A008BD092 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -71,6 +74,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		771C971720E1EF09001BA7FC /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				77E75430203FE43400A5AF44 /* SJOrentationObserver.h */,
+				77E7542F203FE43400A5AF44 /* SJOrentationObserver.m */,
+			);
+			path = Deprecated;
+			sourceTree = "<group>";
+		};
 		77A438991FDC238A008BD092 = {
 			isa = PBXGroup;
 			children = (
@@ -112,8 +124,9 @@
 		77A438C91FDC29D7008BD092 /* SJOrentationObserver */ = {
 			isa = PBXGroup;
 			children = (
-				77E75430203FE43400A5AF44 /* SJOrentationObserver.h */,
-				77E7542F203FE43400A5AF44 /* SJOrentationObserver.m */,
+				771C971520E1EEFD001BA7FC /* SJRotationManager.h */,
+				771C971420E1EEFD001BA7FC /* SJRotationManager.m */,
+				771C971720E1EF09001BA7FC /* Deprecated */,
 				77A438D71FDC2A18008BD092 /* Category */,
 			);
 			path = SJOrentationObserver;
@@ -274,6 +287,7 @@
 				77A438E01FDC2A18008BD092 /* UIViewController+SJExtension.m in Sources */,
 				77A438B51FDC238A008BD092 /* main.m in Sources */,
 				77A438DF1FDC2A18008BD092 /* UITabBarController+SJExtension.m in Sources */,
+				771C971620E1EEFD001BA7FC /* SJRotationManager.m in Sources */,
 				77A438A71FDC238A008BD092 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

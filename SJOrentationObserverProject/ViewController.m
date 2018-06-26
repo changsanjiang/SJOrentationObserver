@@ -7,11 +7,11 @@
 //
 
 #import "ViewController.h"
-#import "SJOrentationObserver.h"
+#import "SJRotationManager.h"
 
 @interface ViewController ()
 
-@property (nonatomic, strong) SJOrentationObserver *observer;
+@property (nonatomic, strong) SJRotationManager *observer;
 @property (weak, nonatomic) IBOutlet UIButton *changeBtn;
 
 @end
@@ -26,7 +26,7 @@
     
     [self _addExampleView];
     
-    _observer = [[SJOrentationObserver alloc] initWithTarget:_targetView container:_superview rotationCondition:^BOOL(SJOrentationObserver * _Nonnull observer) {
+    _observer = [[SJRotationManager alloc] initWithTarget:_targetView superview:_superview rotationCondition:^BOOL(SJRotationManager * _Nonnull observer) {
         return YES;
     }];
 }

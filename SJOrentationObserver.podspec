@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SJOrentationObserver"
-  s.version      = "1.0.8.1"
+  s.version      = "1.1.0"
   s.summary      = "Screen rotation observer."
 
   # This description is used to generate tags and improve search results.
@@ -93,8 +93,13 @@ Pod::Spec.new do |s|
   #
 
   s.source_files  = "SJOrentationObserver/*.{h,m}"
+
   s.subspec 'Category' do |ss|
     ss.source_files = 'SJOrentationObserver/Category/*.{h,m}'
+  end
+
+  s.subspec 'Deprecated' do |ss|
+    ss.source_files = 'SJOrentationObserver/Deprecated/*.{h,m}'
   end
 
   # s.exclude_files = "Classes/Exclude"
