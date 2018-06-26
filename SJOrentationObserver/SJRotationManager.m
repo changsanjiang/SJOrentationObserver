@@ -224,7 +224,10 @@ NS_ASSUME_NONNULL_BEGIN
         // update
         self.currentOrientation = ori_new;
         self.transitioning = true;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         [[UIApplication sharedApplication] setStatusBarOrientation:statusBarOrientation animated:NO];
+#pragma clang diagnostic pop
         if ( [self.delegate respondsToSelector:@selector(rotationManager:willRotateView:)] ) {
             [self.delegate rotationManager:self willRotateView:self.isFullscreen];
         }
