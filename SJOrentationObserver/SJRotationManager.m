@@ -59,22 +59,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)_deviceOrientationDidChange {
     UIDeviceOrientation dev_orientation = [UIDevice currentDevice].orientation;
-
     switch ( dev_orientation ) {
         case UIDeviceOrientationPortrait:
         case UIDeviceOrientationLandscapeLeft:
         case UIDeviceOrientationLandscapeRight: {
             _rec_deviceOrientation = dev_orientation;
-        
-            if ( self.disableAutorotation ) {
-#ifdef DEBUG
-                NSLog(@"%d - %s - SJRotationManager - 旋转被禁止, 暂时无法旋转!", (int)__LINE__, __func__);
-#endif
-                return;
-            }
         }
             break;
         default:    break;
+    }
+    
+    if ( self.disableAutorotation ) {
+#ifdef DEBUG
+        NSLog(@"%d - %s - SJRotationManager - 旋转被禁止, 暂时无法旋转!", (int)__LINE__, __func__);
+#endif
+        return;
     }
     
     switch ( dev_orientation ) {
