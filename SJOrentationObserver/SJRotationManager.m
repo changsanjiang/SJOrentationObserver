@@ -59,16 +59,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)_deviceOrientationDidChange {
     UIDeviceOrientation dev_orientation = [UIDevice currentDevice].orientation;
-
+    
     switch ( dev_orientation ) {
         case UIDeviceOrientationPortrait:
         case UIDeviceOrientationLandscapeLeft:
         case UIDeviceOrientationLandscapeRight: {
             _rec_deviceOrientation = dev_orientation;
-        
+            
             if ( self.disableAutorotation ) {
 #ifdef DEBUG
-                NSLog(@"%d - %s - SJRotationManager - 旋转被禁止, 暂时无法旋转!", (int)__LINE__, __func__);
+                NSLog(@"%d - %s - SJRotationManager - 自动旋转被禁止, 暂时无法旋转!", (int)__LINE__, __func__);
 #endif
                 return;
             }
@@ -131,7 +131,7 @@ NS_ASSUME_NONNULL_BEGIN
     // 如果是全屏状态 并且 支持 Portrait
     if ( self.isFullscreen && [self isSupportedPortrait] ) {
         [self rotate:SJOrientation_Portrait animated:YES];
-
+        
         return;
     }
     
@@ -192,7 +192,7 @@ NS_ASSUME_NONNULL_BEGIN
         SJOrientation ori_old = self.currentOrientation;
         SJOrientation ori_new = orientation;
         if ( ori_old == ori_new ) { if ( completionHandler ) completionHandler(self); return; }
-        UIWindow *window = [(id)[UIApplication sharedApplication].delegate valueForKey:@"window"];
+        UIWindow *window = [UIApplication sharedApplication].keyWindow;
         if ( !window ) return;
         CGAffineTransform transform = CGAffineTransformIdentity;
         UIInterfaceOrientation statusBarOrientation = UIInterfaceOrientationUnknown;
@@ -210,20 +210,20 @@ NS_ASSUME_NONNULL_BEGIN
             case SJOrientation_LandscapeRight: {
                 statusBarOrientation = UIInterfaceOrientationLandscapeLeft;
                 transform = CGAffineTransformMakeRotation(-M_PI_2);
-
+                
             }
                 break;
         }
         
-        // update 
+        // update
         self.con_portraitRect = [window convertRect:self.superview.bounds fromView:self.superview];
-
+        
         if ( ori_old == SJOrientation_Portrait ) {
             self.target.translatesAutoresizingMaskIntoConstraints = YES;
             self.target.frame = self.con_portraitRect;
             [window addSubview:self.target];
         }
-
+        
         // update
         self.currentOrientation = ori_new;
         self.transitioning = true;
@@ -248,8 +248,8 @@ NS_ASSUME_NONNULL_BEGIN
                 [self.target layoutIfNeeded];
             }
             else {
-                CGFloat width = [UIScreen mainScreen].bounds.size.width;
-                CGFloat height = [UIScreen mainScreen].bounds.size.height;
+                CGFloat width  = window.bounds.size.width;
+                CGFloat height = window.bounds.size.height;
                 CGFloat max = MAX(width, height);
                 CGFloat min = MIN(width, height);
                 self.target.bounds = (CGRect){CGPointZero, (CGSize){max, min}};
