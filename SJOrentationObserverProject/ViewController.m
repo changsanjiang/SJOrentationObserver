@@ -7,54 +7,19 @@
 //
 
 #import "ViewController.h"
-#import "SJRotationManager.h"
+#import "ViewControllerRotateController.h"
+#import "ViewRotateController.h"
+
 
 @interface ViewController ()
 
-@property (nonatomic, strong) SJRotationManager *observer;
-@property (weak, nonatomic) IBOutlet UIButton *changeBtn;
-
 @end
 
-@implementation ViewController {
-    UIView *_superview;
-    UIView *_targetView;
+@implementation ViewController
+- (IBAction)veiw_rotation:(id)sender {
+    [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewRotateController"] animated:YES];
 }
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self _addExampleView];
-    
-    _observer = [[SJRotationManager alloc] initWithTarget:_targetView superview:_superview rotationCondition:^BOOL(SJRotationManager * _Nonnull observer) {
-        return YES;
-    }];
+- (IBAction)viewController_rotation:(id)sender {
+    [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewControllerRotateController"] animated:YES];
 }
-
-- (void)_addExampleView {
-    
-    _superview = [UIView new];
-    _superview.backgroundColor = [UIColor blackColor];
-    _superview.frame = CGRectMake(0, 300, self.view.frame.size.width, self.view.frame.size.width * 9.0 / 16);
-    [self.view addSubview:_superview];
-    
-    _targetView = [UIView new];
-    _targetView.frame = _superview.bounds;
-    _targetView.backgroundColor = [UIColor orangeColor];
-    [_superview addSubview:_targetView];
-    
-    [_targetView addSubview:self.changeBtn];
-    self.changeBtn.frame = _targetView.bounds;
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)change:(id)sender {
-    [_observer rotate];
-}
-
 @end
