@@ -182,7 +182,7 @@ NS_ASSUME_NONNULL_BEGIN
     [self rotate:orientation animated:animated completionHandler:nil];
 }
 
-- (void)rotate:(SJOrientation)orientation animated:(BOOL)animated completionHandler:(nullable void (^)(SJRotationManager * _Nonnull))completionHandler {
+- (void)rotate:(SJOrientation)orientation animated:(BOOL)animated completionHandler:(nullable void (^)(id<SJRotationManagerProtocol> _Nonnull))completionHandler {
     __weak typeof(self) _self = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         __strong typeof(_self) self = _self;
