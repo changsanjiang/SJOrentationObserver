@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SJOrentationObserver"
-  s.version      = "1.1.3"
+  s.version      = "1.1.4"
   s.summary      = "Screen rotation observer."
 
   # This description is used to generate tags and improve search results.
@@ -98,10 +98,6 @@ Pod::Spec.new do |s|
     ss.source_files = 'SJOrentationObserver/Category/*.{h,m}'
   end
 
-  s.subspec 'Deprecated' do |ss|
-    ss.source_files = 'SJOrentationObserver/Deprecated/*.{h,m}'
-  end
-
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
@@ -143,6 +139,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  #s.dependency "Masonry"
+  s.dependency "Masonry"
 
 end

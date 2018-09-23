@@ -96,7 +96,7 @@ NS_ASSUME_NONNULL_BEGIN
     
     if ( [self isFullscreen] &&
         [self _isSupported:SJOrientation_Portrait] ) {
-        [self rotate:SJOrientation_Portrait animated:YES];
+        [self rotate:SJOrientation_Portrait animated:YES completionHandler:nil];
         return;
     }
     
@@ -135,7 +135,12 @@ NS_ASSUME_NONNULL_BEGIN
         if ( !self.target ) return;
         if ( self.rotationCondition ) { if ( !self.rotationCondition(self) ) return; }
         if ( orientation == self.currentOrientation ) { if (completionHandler) completionHandler(self); return; }
-        self.rotateCompletionHandler = completionHandler;
+        BOOL old = self.disableAutorotation;
+        self.disableAutorotation = NO;
+        self.rotateCompletionHandler = ^(id<SJRotationManagerProtocol> mgr) {
+            mgr.disableAutorotation = old;
+            if ( completionHandler ) completionHandler(mgr);
+        };
         [UIDevice.currentDevice setValue:@(_deviceOrentationForSJOrientation(orientation)) forKey:@"orientation"];
         [UIViewController attemptRotationToDeviceOrientation];
     });

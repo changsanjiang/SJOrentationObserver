@@ -128,6 +128,30 @@
                                     <constraint firstAttribute="trailing" secondItem="4JQ-nl-MEL" secondAttribute="trailing" id="nhF-3y-xVB"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cB-Vw-Ka8">
+                                <rect key="frame" x="96" y="522" width="183" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="disableAutoRotation = YES"/>
+                                <connections>
+                                    <action selector="dis_Yes:" destination="CTo-io-zF0" eventType="touchUpInside" id="BXy-Rv-Qwn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjG-JA-DUK">
+                                <rect key="frame" x="100" y="560" width="178" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="disableAutoRotation = NO"/>
+                                <connections>
+                                    <action selector="dis_NO:" destination="CTo-io-zF0" eventType="touchUpInside" id="kr9-H7-KPo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QtF-fj-atd">
+                                <rect key="frame" x="130" y="491" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Rotate"/>
+                                <connections>
+                                    <action selector="rotate:" destination="CTo-io-zF0" eventType="touchUpInside" id="aaB-He-qG9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>

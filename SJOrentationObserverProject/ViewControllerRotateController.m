@@ -29,13 +29,30 @@
         return YES;
     };
     _mgr.delegate = self;
+    
+//    [_mgr rotate];
+    
+//    [_mgr rotate:SJOrientation_LandscapeRight animated:YES];
+//
+//    [_mgr rotate:SJOrientation_LandscapeLeft animated:YES completionHandler:^(id<SJRotationManagerProtocol>  _Nonnull mgr) {
+//        NSLog(@"....");
+//    }];
+    
     // Do any additional setup after loading the view.
 }
 
 - (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
 }
-
+- (IBAction)dis_Yes:(id)sender {
+    _mgr.disableAutorotation = YES;
+}
+- (IBAction)dis_NO:(id)sender {
+    _mgr.disableAutorotation = NO;
+}
+- (IBAction)rotate:(id)sender {
+    [_mgr rotate];
+}
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
