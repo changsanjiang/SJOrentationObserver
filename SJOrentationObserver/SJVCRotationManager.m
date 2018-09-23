@@ -177,7 +177,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)vc_shouldAutorotate {
     [self _refreshDeviceOrientation];
-    if ( self.rotationCondition && self.rotationCondition(self) ) return YES;
+    if ( self.rotationCondition && !self.rotationCondition(self) ) return NO;
     if ( self.needToRotate ) return YES;
     if ([self _isSupported:_sjOrientationForDeviceOrentation(_rec_deviceOrientation)] ) return !self.disableAutorotation;
     return NO;

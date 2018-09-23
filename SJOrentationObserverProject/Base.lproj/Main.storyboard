@@ -145,9 +145,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QtF-fj-atd">
-                                <rect key="frame" x="130" y="491" width="45" height="30"/>
+                                <rect key="frame" x="111" y="491" width="84" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Rotate"/>
+                                <state key="normal" title="force Rotate"/>
                                 <connections>
                                     <action selector="rotate:" destination="CTo-io-zF0" eventType="touchUpInside" id="aaB-He-qG9"/>
                                 </connections>
