@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) UIDeviceOrientation rec_deviceOrientation;
 @property (nonatomic) SJOrientation currentOrientation;
 @property (nonatomic) BOOL transitioning;
+@property (nonatomic) BOOL needToRotate;
 @end
 
 @implementation SJVCRotationManager {
@@ -135,10 +136,11 @@ NS_ASSUME_NONNULL_BEGIN
         if ( !self.target ) return;
         if ( self.rotationCondition ) { if ( !self.rotationCondition(self) ) return; }
         if ( orientation == self.currentOrientation ) { if (completionHandler) completionHandler(self); return; }
-        BOOL old = self.disableAutorotation;
-        self.disableAutorotation = NO;
+        self.needToRotate = YES;
         self.rotateCompletionHandler = ^(id<SJRotationManagerProtocol> mgr) {
-            mgr.disableAutorotation = old;
+            __strong typeof(_self) self = _self;
+            if ( !self ) return ;
+            self.needToRotate = NO;
             if ( completionHandler ) completionHandler(mgr);
         };
         [UIDevice.currentDevice setValue:@(_deviceOrentationForSJOrientation(orientation)) forKey:@"orientation"];
@@ -175,6 +177,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)vc_shouldAutorotate {
     [self _refreshDeviceOrientation];
+    if ( self.rotationCondition && self.rotationCondition(self) ) return YES;
+    if ( self.needToRotate ) return YES;
     if ([self _isSupported:_sjOrientationForDeviceOrentation(_rec_deviceOrientation)] ) return !self.disableAutorotation;
     return NO;
 }
