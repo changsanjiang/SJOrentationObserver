@@ -7,4 +7,5 @@ target 'SJOrentationObserverProject' do
 
   # Pods for SJOrentationObserverProject
     pod 'Masonry'
+    pod 'SJObserverHelper'
 end

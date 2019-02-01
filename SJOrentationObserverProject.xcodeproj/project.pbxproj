@@ -19,11 +19,11 @@
 		A640CDDA2152BC980018E08A /* UIViewController+SJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A640CDD02152BC980018E08A /* UIViewController+SJExtension.m */; };
 		A640CDDB2152BC980018E08A /* UITabBarController+SJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A640CDD12152BC980018E08A /* UITabBarController+SJExtension.m */; };
 		A640CDDC2152BC980018E08A /* UINavigationController+SJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A640CDD42152BC980018E08A /* UINavigationController+SJExtension.m */; };
-		A640CDDD2152BC980018E08A /* SJVCRotationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A640CDD72152BC980018E08A /* SJVCRotationManager.m */; };
-		A640CDDE2152BC980018E08A /* SJRotationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A640CDD82152BC980018E08A /* SJRotationManager.m */; };
 		A640CDE12152BD270018E08A /* ViewRotateController.m in Sources */ = {isa = PBXBuildFile; fileRef = A640CDE02152BD270018E08A /* ViewRotateController.m */; };
 		A640CDE42152BD320018E08A /* ViewControllerRotateController.m in Sources */ = {isa = PBXBuildFile; fileRef = A640CDE32152BD320018E08A /* ViewControllerRotateController.m */; };
 		A644109A200A71A7006FD832 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A6441099200A71A7006FD832 /* Podfile */; };
+		A650C97E22040ADE00248051 /* SJVCRotationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A650C97922040ADE00248051 /* SJVCRotationManager.m */; };
+		A650C97F22040ADE00248051 /* SJRotationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A650C97C22040ADE00248051 /* SJRotationManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,22 +42,22 @@
 		77A438E11FDC2B5C008BD092 /* SJOrentationObserver.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SJOrentationObserver.podspec; sourceTree = "<group>"; };
 		77A438E31FDD6BFC008BD092 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		826C1431EE5E5F4EADCED70E /* Pods-SJOrentationObserverProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SJOrentationObserverProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-SJOrentationObserverProject/Pods-SJOrentationObserverProject.release.xcconfig"; sourceTree = "<group>"; };
-		A640CDCE2152BC980018E08A /* SJVCRotationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVCRotationManager.h; sourceTree = "<group>"; };
 		A640CDD02152BC980018E08A /* UIViewController+SJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SJExtension.m"; sourceTree = "<group>"; };
 		A640CDD12152BC980018E08A /* UITabBarController+SJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+SJExtension.m"; sourceTree = "<group>"; };
 		A640CDD22152BC980018E08A /* UINavigationController+SJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+SJExtension.h"; sourceTree = "<group>"; };
 		A640CDD32152BC980018E08A /* UIViewController+SJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SJExtension.h"; sourceTree = "<group>"; };
 		A640CDD42152BC980018E08A /* UINavigationController+SJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+SJExtension.m"; sourceTree = "<group>"; };
 		A640CDD52152BC980018E08A /* UITabBarController+SJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+SJExtension.h"; sourceTree = "<group>"; };
-		A640CDD62152BC980018E08A /* SJRotationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJRotationManager.h; sourceTree = "<group>"; };
-		A640CDD72152BC980018E08A /* SJVCRotationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVCRotationManager.m; sourceTree = "<group>"; };
-		A640CDD82152BC980018E08A /* SJRotationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJRotationManager.m; sourceTree = "<group>"; };
-		A640CDD92152BC980018E08A /* SJRotationManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJRotationManagerProtocol.h; sourceTree = "<group>"; };
 		A640CDDF2152BD270018E08A /* ViewRotateController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewRotateController.h; sourceTree = "<group>"; };
 		A640CDE02152BD270018E08A /* ViewRotateController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewRotateController.m; sourceTree = "<group>"; };
 		A640CDE22152BD320018E08A /* ViewControllerRotateController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewControllerRotateController.h; sourceTree = "<group>"; };
 		A640CDE32152BD320018E08A /* ViewControllerRotateController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewControllerRotateController.m; sourceTree = "<group>"; };
 		A6441099200A71A7006FD832 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		A650C97922040ADE00248051 /* SJVCRotationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVCRotationManager.m; sourceTree = "<group>"; };
+		A650C97A22040ADE00248051 /* SJRotationManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJRotationManagerProtocol.h; sourceTree = "<group>"; };
+		A650C97B22040ADE00248051 /* SJRotationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJRotationManager.h; sourceTree = "<group>"; };
+		A650C97C22040ADE00248051 /* SJRotationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJRotationManager.m; sourceTree = "<group>"; };
+		A650C97D22040ADE00248051 /* SJVCRotationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVCRotationManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,12 +126,12 @@
 		A640CDCD2152BC980018E08A /* SJOrentationObserver */ = {
 			isa = PBXGroup;
 			children = (
+				A650C97B22040ADE00248051 /* SJRotationManager.h */,
+				A650C97C22040ADE00248051 /* SJRotationManager.m */,
+				A650C97A22040ADE00248051 /* SJRotationManagerProtocol.h */,
+				A650C97D22040ADE00248051 /* SJVCRotationManager.h */,
+				A650C97922040ADE00248051 /* SJVCRotationManager.m */,
 				A640CDCF2152BC980018E08A /* Category */,
-				A640CDD62152BC980018E08A /* SJRotationManager.h */,
-				A640CDD82152BC980018E08A /* SJRotationManager.m */,
-				A640CDD92152BC980018E08A /* SJRotationManagerProtocol.h */,
-				A640CDCE2152BC980018E08A /* SJVCRotationManager.h */,
-				A640CDD72152BC980018E08A /* SJVCRotationManager.m */,
 			);
 			path = SJOrentationObserver;
 			sourceTree = SOURCE_ROOT;
@@ -168,8 +168,6 @@
 				77A4389E1FDC238A008BD092 /* Sources */,
 				77A4389F1FDC238A008BD092 /* Frameworks */,
 				77A438A01FDC238A008BD092 /* Resources */,
-				64FE51AFF79485E598507AA4 /* [CP] Embed Pods Frameworks */,
-				9FFC297ECAFB00F92A73FBA0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -248,36 +246,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		64FE51AFF79485E598507AA4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SJOrentationObserverProject/Pods-SJOrentationObserverProject-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9FFC297ECAFB00F92A73FBA0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SJOrentationObserverProject/Pods-SJOrentationObserverProject-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -286,14 +254,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A640CDE42152BD320018E08A /* ViewControllerRotateController.m in Sources */,
-				A640CDDD2152BC980018E08A /* SJVCRotationManager.m in Sources */,
 				A640CDDC2152BC980018E08A /* UINavigationController+SJExtension.m in Sources */,
+				A650C97F22040ADE00248051 /* SJRotationManager.m in Sources */,
+				A650C97E22040ADE00248051 /* SJVCRotationManager.m in Sources */,
 				A640CDDB2152BC980018E08A /* UITabBarController+SJExtension.m in Sources */,
 				77A438AA1FDC238A008BD092 /* ViewController.m in Sources */,
 				77A438B51FDC238A008BD092 /* main.m in Sources */,
 				A640CDE12152BD270018E08A /* ViewRotateController.m in Sources */,
 				77A438A71FDC238A008BD092 /* AppDelegate.m in Sources */,
-				A640CDDE2152BC980018E08A /* SJRotationManager.m in Sources */,
 				A640CDDA2152BC980018E08A /* UIViewController+SJExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

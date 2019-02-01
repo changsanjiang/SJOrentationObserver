@@ -9,12 +9,12 @@
 #import "ViewControllerRotateController.h"
 #import "SJVCRotationManager.h"
 
-@interface ViewControllerRotateController ()<SJRotationManagerDelegate>
+@interface ViewControllerRotateController ()
 @property (weak, nonatomic) IBOutlet UIView *superview;
 @property (weak, nonatomic) IBOutlet UIView *target;
 
 @property (nonatomic, strong) SJVCRotationManager *mgr;
-
+@property (nonatomic, strong) id<SJRotationManagerObserver> rotationObserver;
 @end
 
 @implementation ViewControllerRotateController
@@ -25,24 +25,35 @@
     _mgr = [[SJVCRotationManager alloc] initWithViewController:self];
     _mgr.superview = _superview;
     _mgr.target = _target;
-    _mgr.rotationCondition = ^BOOL(id<SJRotationManagerProtocol>  _Nonnull mgr) {
+    _mgr.shouldTriggerRotation = ^BOOL(id<SJRotationManagerProtocol>  _Nonnull mgr) {
+//        if ( ... ) {
+//            // ...
+//            return NO;
+//        }
         return YES;
     };
-    _mgr.delegate = self;
     
-//    [_mgr rotate];
+    _rotationObserver = [_mgr getObserver];
+    __weak typeof(self) _self = self;
+    _rotationObserver.rotationDidStartExeBlock = ^(id<SJRotationManagerProtocol>  _Nonnull mgr) {
+        __strong typeof(_self) self = _self;
+        if ( !self ) return ;
+        NSLog(@"开始旋转");
+        [self.navigationController setNavigationBarHidden:mgr.isFullscreen animated:YES];
+    };
+    _rotationObserver.rotationDidEndExeBlock = ^(id<SJRotationManagerProtocol>  _Nonnull mgr) {
+        __strong typeof(_self) self = _self;
+        if ( !self ) return ;
+        NSLog(@"结束旋转");
+    };
     
-//    [_mgr rotate:SJOrientation_LandscapeRight animated:YES];
-//
-//    [_mgr rotate:SJOrientation_LandscapeLeft animated:YES completionHandler:^(id<SJRotationManagerProtocol>  _Nonnull mgr) {
-//        NSLog(@"....");
-//    }];
-    
-    // Do any additional setup after loading the view.
+    [[UIDevice currentDevice] setValue:@(UIDeviceOrientationPortrait) forKey:@"orientation"];
+    [[UIDevice currentDevice] setValue:@(UIDeviceOrientationLandscapeLeft) forKey:@"orientation"];
 }
 
 - (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:NO];
+    [[UIDevice currentDevice] setValue:@(UIDeviceOrientationPortrait) forKey:@"orientation"];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)dis_Yes:(id)sender {
     _mgr.disableAutorotation = YES;
@@ -55,12 +66,10 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
@@ -80,17 +89,4 @@
     return [_mgr vc_preferredInterfaceOrientationForPresentation];
 }
 
-- (void)rotationManager:(id<SJRotationManagerProtocol>)manager didRotateView:(BOOL)isFullscreen {
-#ifdef DEBUG
-    NSLog(@"%d - %s", (int)__LINE__, __func__);
-#endif
-    
-}
-
-- (void)rotationManager:(id<SJRotationManagerProtocol>)manager willRotateView:(BOOL)isFullscreen {
-#ifdef DEBUG
-    NSLog(@"%d - %s", (int)__LINE__, __func__);
-#endif
-    
-}
 @end

@@ -9,12 +9,12 @@
 #import "ViewRotateController.h"
 #import "SJRotationManager.h"
 
-@interface ViewRotateController ()<SJRotationManagerDelegate>
+@interface ViewRotateController () 
 @property (weak, nonatomic) IBOutlet UIView *superview;
 @property (weak, nonatomic) IBOutlet UIView *target;
 
 @property (nonatomic, strong) SJRotationManager *mgr;
-
+@property (nonatomic, strong) id<SJRotationManagerObserver> rotationObserver;
 @end
 
 @implementation ViewRotateController
@@ -25,23 +25,22 @@
     _mgr = [[SJRotationManager alloc] init];
     _mgr.superview = _superview;
     _mgr.target = _target;
-    _mgr.rotationCondition = ^BOOL(id<SJRotationManagerProtocol>  _Nonnull mgr) {
+    _mgr.shouldTriggerRotation = ^BOOL(id<SJRotationManagerProtocol>  _Nonnull mgr) {
+//        if ( ... ) {
+//            // ...
+//            return NO;
+//        }
         return YES;
     };
-    _mgr.delegate = self;
+    
+    _rotationObserver = [_mgr getObserver];
+    _rotationObserver.rotationDidStartExeBlock = ^(id<SJRotationManagerProtocol>  _Nonnull mgr) {
+        NSLog(@"开始旋转");
+    };
+    _rotationObserver.rotationDidEndExeBlock = ^(id<SJRotationManagerProtocol>  _Nonnull mgr) {
+        NSLog(@"结束旋转");
+    };
+    
     // Do any additional setup after loading the view.
-}
-
-- (void)rotationManager:(id<SJRotationManagerProtocol>)manager didRotateView:(BOOL)isFullscreen {
-#ifdef DEBUG
-    NSLog(@"%d - %s", (int)__LINE__, __func__);
-#endif
-}
-
-- (void)rotationManager:(id<SJRotationManagerProtocol>)manager willRotateView:(BOOL)isFullscreen {
-#ifdef DEBUG
-    NSLog(@"%d - %s", (int)__LINE__, __func__);
-#endif
-
-}
+} 
 @end

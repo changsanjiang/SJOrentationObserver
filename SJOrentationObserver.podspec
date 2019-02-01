@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SJOrentationObserver"
-  s.version      = "1.2.0"
+  s.version      = "1.3.0"
   s.summary      = "Screen rotation observer."
 
   # This description is used to generate tags and improve search results.
@@ -140,5 +140,6 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   s.dependency "Masonry"
+  s.dependency "SJObserverHelper"
 
 end

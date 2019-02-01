@@ -1,12 +1,20 @@
 PODS:
   - Masonry (1.1.0)
+  - SJObserverHelper (1.0.6)
 
 DEPENDENCIES:
   - Masonry
+  - SJObserverHelper
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Masonry
+    - SJObserverHelper
 
 SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  SJObserverHelper: aaa83baa3ea3fdb3e972979fed25b24df524fb01
 
-PODFILE CHECKSUM: 878550f3f1aedbf16af34b5acc24913dfd81d13c
+PODFILE CHECKSUM: 024b694c83a0eabb6ec53430a40634ba71b87f87
 
-COCOAPODS: 1.4.0.rc.1
+COCOAPODS: 1.6.0.rc.1
